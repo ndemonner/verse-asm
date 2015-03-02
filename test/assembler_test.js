@@ -26,5 +26,9 @@ describe('assembler', function () {
     var bytecode = assembler.assemble();
 
     var vm = new VM;
+    vm.load(bytecode);
+    var result = vm.execute();
+
+    expect(result.value).to.eql(3628800);
   });
 });
