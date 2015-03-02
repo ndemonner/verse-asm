@@ -1,0 +1,28 @@
+# Factorial!
+
+push 10
+store 0
+push 1
+store 1
+
+#
+# Put the counter value on the stack.  If it's 0, we're done
+# and register 1 contains the final result.
+#
+
+recurse:
+  load 0
+  jz :finish
+  load 1 # result
+  load 0 # count
+  mul
+  store 1 # new result
+  load 0
+  push 1
+  sub
+  store 0
+  jmp :recurse
+
+finish:
+  load 1
+  stop

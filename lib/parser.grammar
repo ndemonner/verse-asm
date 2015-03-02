@@ -1,0 +1,50 @@
+{
+  function reify(match) {
+    return match.join("");
+  }
+}
+
+start
+  = line+
+
+line
+  = space* el:element "\n"? { return el; }
+  / space* "\n" { return undefined; }
+
+element
+  = c:comment    { return undefined; }
+  / l:label      { return { label: l }; }
+  / e:expression { return { expression: e }; }
+
+label
+  = i:identifier ":" comment? { return i; }
+
+expression
+  = id:identifier space* op:operand? comment? {
+    return {
+      opcode: id,
+      operand: op
+    }
+  }
+
+operand
+  = ref:labelRef { return { reference: ref }; }
+  / lit:literal  { return { literal: lit }; }
+
+labelRef
+  = ":" i:identifier { return i; }
+
+literal
+  = digits:[0-9]+ { return parseInt(reify(digits), 10); }
+
+identifier
+  = chars:[a-z_]+ { return reify(chars); }
+
+comment
+  = space* "#" space* (sentence / "\n")
+
+sentence
+  = [^\n]+
+
+space
+  = " "

@@ -1,0 +1,24 @@
+{
+  "name": "verse-asm",
+  "version": "0.1.0",
+  "description": "Assembler for the VerseVM",
+  "main": "lib/assembler.js",
+  "scripts": {
+    "test": "node_modules/.bin/mocha"
+  },
+  "author": "Nick DeMonner",
+  "license": "Proprietary",
+  "dependencies": {
+    "binstring": "^0.2.1",
+    "lodash": "^3.3.1",
+    "verse-vm": "../verse-vm"
+  },
+  "devDependencies": {
+    "babel": "^4.4.5",
+    "chai": "^2.0.0",
+    "chai-change": "^1.0.0",
+    "chai-spies": "^0.5.1",
+    "mocha": "^2.1.0",
+    "pegjs": "^0.8.0"
+  }
+}

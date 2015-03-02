@@ -1,0 +1,5 @@
+--require test/test_helper
+--compilers js:babel/register
+--reporter dot
+--growl
+--recursive
